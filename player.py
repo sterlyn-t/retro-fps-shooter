@@ -6,6 +6,7 @@ class Player:
     def __init__(self, game):
         self.game = game
         self.x, self.y = PLAYER_POS
+        self.rel = 0
         self.angle = PLAYER_ANGLE
 
     def movement(self):
@@ -58,7 +59,7 @@ class Player:
         pg.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)
             
 
-    def mouse_controls(self):
+    def mouse_control(self):
         mx, my = pg.mouse.get_pos()
         if mx < MOUSE_BORDER_LEFT or mx > MOUSE_BORDER_RIGHT:
             pg.mouse.set_pos([HALF_WIDTH, HALF_HEIGHT])
@@ -68,7 +69,7 @@ class Player:
 
     def update(self):
         self.movement()
-        self.mouse_controls()
+        self.mouse_control()
 
     @property
     def pos(self):
